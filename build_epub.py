@@ -143,6 +143,13 @@ def main():
     epub_command = ['pandoc', '-o', 'output.epub'] + common_options + processed_files
     run_pandoc(epub_command, "EPUB")
 
+    # Check if references.bib exists
+    bibliography_option = []
+    if os.path.exists('references.bib'):
+        bibliography_option = ['--citeproc', '--bibliography=references.bib']
+    else:
+        logging.warning("references.bib not found. Citations may not be processed correctly.")
+
     # Convert to PDF using Pandoc with modified options
     pdf_engines = ['xelatex', 'pdflatex']
     for engine in pdf_engines:
@@ -156,7 +163,8 @@ def main():
             '--variable', 'pagestyle=plain',      # Removes running headers
             '--no-highlight',                     # Disables syntax highlighting
             '--dpi=300',                          # Sets a higher DPI for images
-        ] + common_options + processed_files
+            '--from', 'markdown+lists_without_preceding_blankline',  # Improved list parsing
+        ] + bibliography_option + common_options + processed_files
         if run_pandoc(pdf_command, "PDF"):
             break
     else:
