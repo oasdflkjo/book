@@ -108,7 +108,12 @@ def process_markdown_files():
     markdown_files = glob.glob('*.md')
     
     # Sort files based on the chapter number in the filename
-    sorted_files = sorted(markdown_files, key=lambda x: int(x.split('.')[0]))
+    sorted_files = sorted(markdown_files, key=lambda x: int(x.split('.')[0]) if x.split('.')[0].isdigit() else float('inf'))
+    
+    # Move "References.md" to the end if it exists
+    if "References.md" in sorted_files:
+        sorted_files.remove("References.md")
+        sorted_files.append("References.md")
     
     processed_files = []
     
