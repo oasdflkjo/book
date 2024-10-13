@@ -17,14 +17,14 @@
 
 ## 4. Testing and Quality Assurance
 - Unit testing for embedded systems
-- **4.1 Hardware-in-the-Loop (HIL) Testing**
+- Hardware-in-the-Loop (HIL) Testing
 - Continuous integration and delivery (CI/CD)
 - Linting and best practices for embedded systems
 
 ## 5. Communication Protocols
 - Overview of I2C, SPI, UART, etc.
 - Practical advice on choosing protocols
-- Networking in embedded systems (if applicable)
+- Networking in embedded systems
 
 ## 6. Real-time Operating Systems (RTOS)
 - Concepts of real-time systems and scheduling
@@ -41,6 +41,8 @@
 - Secure boot and firmware updates
 - Encryption and communication security
 
+
+// Nice to have but we do not make this yet
 ## 9. Case Studies and Practical Examples
 - Real-world applications of embedded systems
 - Practical project walkthroughs (e.g., STM32, FreeRTOS)
